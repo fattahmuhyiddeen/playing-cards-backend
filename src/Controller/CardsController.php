@@ -35,7 +35,10 @@ class CardsController extends AppController
      * @return \Cake\Http\Response|null
      */
     public function deal(){
+        $this->response->header('Access-Control-Allow-Origin', '*');
+        
         $number_of_players = $this->request->getQuery('number');
+
         if(!is_numeric($number_of_players) || (int)$number_of_players < 0){
             $this->response->statusCode(400);
             $this->set([
