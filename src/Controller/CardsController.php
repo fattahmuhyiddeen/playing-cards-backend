@@ -32,6 +32,7 @@ class CardsController extends AppController
     /**
      * Deal cards to n players
      *
+     * query parameter `number` accept non-negative integer
      * @return \Cake\Http\Response|null
      */
     public function deal(){
@@ -61,14 +62,13 @@ class CardsController extends AppController
         $response = [];
 
         if($number_of_players > 0){
-            $chunk_size = (int)(count($data) / $number_of_players);
-
-            if($chunk_size == 0){
-                $chunk_size = 1;
+            for($i=0; $i < $number_of_players; $i++){
+                $response[$i] = [];
             }
 
-            $response = array_chunk($data, $chunk_size);
-            $response = array_pad($response, $number_of_players, []);
+            for($i=0; $i < count($data);$i++){
+                array_push($response[$i % $number_of_players], $data[$i]);
+            }
         }
 
         $this->set([

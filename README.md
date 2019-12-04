@@ -7,3 +7,6 @@ To demo this project, go to `https://playing-cards-backend.herokuapp.com/`. To t
 This front end application is build using `CakePHP`. All scripts, environments and etc should works as it is by default (by CakePHP framework).
 
 No database is required
+
+## Test
+Run `vendor/bin/phpunit` from project root folder.
