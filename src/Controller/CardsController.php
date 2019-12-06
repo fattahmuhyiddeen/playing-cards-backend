@@ -40,6 +40,7 @@ class CardsController extends AppController
         
         $number_of_players = $this->request->getQuery('number');
 
+        // return 400 when parameter number is not defined, or not a number or negative number
         if(!is_numeric($number_of_players) || (int)$number_of_players < 0){
             $this->response->statusCode(400);
             $this->set([
@@ -50,6 +51,7 @@ class CardsController extends AppController
             return;
         }
 
+        // define all cards
         $data = [
             ['A', 'D'], ['2', 'D'], ['3', 'D'], ['4', 'D'], ['5', 'D'], ['6', 'D'], ['7', 'D'], ['8', 'D'], ['9', 'D'], ['X', 'D'], ['J', 'D'], ['Q', 'D'], ['K', 'D'],
             ['A', 'H'], ['2', 'H'], ['3', 'H'], ['4', 'H'], ['5', 'H'], ['6', 'H'], ['7', 'H'], ['8', 'H'], ['9', 'H'], ['X', 'H'], ['J', 'H'], ['Q', 'H'], ['K', 'H'],
@@ -57,10 +59,12 @@ class CardsController extends AppController
             ['A', 'C'], ['2', 'C'], ['3', 'C'], ['4', 'C'], ['5', 'C'], ['6', 'C'], ['7', 'C'], ['8', 'C'], ['9', 'C'], ['X', 'C'], ['J', 'C'], ['Q', 'C'], ['K', 'C'],
         ];
 
+        // shuffle arrangement of the cards
         shuffle($data);
         $number_of_players = (int)$number_of_players;
         $response = [];
 
+        // if number is more than 0, then distribute to all players
         if($number_of_players > 0){
             for($i=0; $i < $number_of_players; $i++){
                 $response[$i] = [];
