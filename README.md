@@ -1,3 +1,6 @@
+## Time Taken
+Time taken to complete this is around 10 hours (this is the first time I'm using CakePHP)
+
 ## Demo
 To demo this project, go to `https://playing-cards-backend.herokuapp.com/`. To test the RestAPI response (for example to test with 9 players), go to `https://playing-cards-backend.herokuapp.com/deal?number=9`. You can change `9` to any number.
 
